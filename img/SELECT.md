@@ -2,8 +2,8 @@
 
 ---
 
-SELECT
-FROM university.students;
+SELECT \*
+FROM university.students
 WHERE YEAR(`date_of_birth`) = 1990
 
 ---
@@ -12,8 +12,8 @@ WHERE YEAR(`date_of_birth`) = 1990
 
 ---
 
-SELECT
-FROM university.courses;
+SELECT \*
+FROM university.courses
 WHERE `cfu` >= 10
 
 ---
@@ -23,8 +23,10 @@ WHERE `cfu` >= 10
 ---
 
 SELECT
-TIMESTAMPDIFF (YEAR(`date_of_birth`), "NOW()") AS `age`
-FROM `university.students`
+
+(YEAR(CURDATE()) - YEAR (date_of_birth)) AS `age`
+FROM university.students
+WHERE `age` > 30
 
 ---
 
@@ -34,7 +36,7 @@ FROM `university.students`
 ---
 
 SELECT
-FROM university.courses;
+FROM `university.courses`;
 WHERE `period` = I semestre AND `year` = 1
 
 ---
@@ -45,7 +47,7 @@ WHERE `period` = I semestre AND `year` = 1
    ***
 
    SELECT
-   FROM university.exams;
+   FROM `university.exams`;
    WHERE `hour`>= 14:00:00 AND `date` = 20/06/2020
 
    ***
@@ -55,7 +57,7 @@ WHERE `period` = I semestre AND `year` = 1
 ---
 
 SELECT
-FROM university.degrees;
+FROM `university.degrees`;
 WHERE `level' = magistrale
 
 ---
