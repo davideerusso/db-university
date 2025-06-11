@@ -24,20 +24,19 @@ WHERE `cfu` >= 10
 
 SELECT
 
-(YEAR(CURDATE()) - YEAR (date_of_birth)) AS `age`
-FROM university.students
-WHERE `age` > 30
+- FROM university.students
+  WHERE (YEAR(CURDATE()) - YEAR (date_of_birth)) > 30
 
----
+  ***
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
    laurea (286)
 
 ---
 
-SELECT
-FROM `university.courses`;
-WHERE `period` = I semestre AND `year` = 1
+SELECT \*
+FROM university.courses
+WHERE `period` = "I semestre" AND `year` = 1
 
 ---
 
@@ -46,9 +45,9 @@ WHERE `period` = I semestre AND `year` = 1
 
    ***
 
-   SELECT
-   FROM `university.exams`;
-   WHERE `hour`>= 14:00:00 AND `date` = 20/06/2020
+   SELECT \*
+   FROM university.exams
+   WHERE `hour` > "14:00" AND `date` = "2020-06-20"
 
    ***
 
@@ -56,9 +55,9 @@ WHERE `period` = I semestre AND `year` = 1
 
 ---
 
-SELECT
-FROM `university.degrees`;
-WHERE `level' = magistrale
+SELECT \*
+FROM university.degrees
+WHERE `level` = "magistrale"
 
 ---
 
@@ -66,9 +65,8 @@ WHERE `level' = magistrale
 
 ---
 
-SELECT `id`, `name`
+SELECT COUNT(\*)
 FROM university.departments;
-GROUP BY `all_departments`
 
 ---
 
@@ -76,8 +74,7 @@ GROUP BY `all_departments`
 
 ---
 
-SELECT `phone`
-FROM `university.teachers`;
-GROUP BY `number_phone`
+SELECT COUNT(`phone`)
+FROM university.teachers
 
 ---
